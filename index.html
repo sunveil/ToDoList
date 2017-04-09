@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>ToDo</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/todos.css">
+</head>
+
+<body>
+    <div class="container" style="margin-top:30px;">
+        <div id="todoapp"  class="col-sm-offset-3 col-sm-6">
+
+            <header>
+                <h1>ToDo</h1>
+                <div class="input-group">
+                    <input id="new-todo" type="text" class="form-control" placeholder="What needs to be done?">
+                    <span class="input-group-btn">
+                        <button id="add-todo" type="button" class="btn btn-secondary btn-success">Add</button>
+                     </span>
+                </div>
+            </header>
+
+            <div id="main">
+                <input id="toggle-all" type="checkbox">
+                <label for="toggle-all">Mark all as complete</label>
+                <ul id="todo-list" class="list-group"></ul>
+            </div>
+
+            <footer>
+                <div id="todo-count"></div>
+            </footer>
+
+        </div>
+    </div>
+
+    <script src="js/lib/jquery-min.js"></script>
+    <script src="js/lib/underscore-min.js"></script>
+    <script src="js/lib/backbone-min.js"></script>
+    <script src="js/lib/backbone.localStorage.js"></script>
+
+    <script src="js/models/todo-model.js"></script>
+    <script src="js/collections/todos-collection.js"></script>
+    <script src="js/views/todos-view.js"></script>
+    <script src="js/views/app-view.js"></script>
+
+    <script src="js/app.js"></script>
+
+    <script type="text/template" id="item-template">
+        <div class="view">
+            <input class="toggle" type="checkbox" <%= done ? 'checked="checked"' : '' %> />
+            <label><%- title %></label>
+            <button type="button" class="close" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <input class="edit" type="text" class="form-control" value="<%- title %>" />
+    </script>
+
+    <script type="text/template" id="stats-template">
+        <div class="btn-group" role="group">
+            <div class="todo-count"><b><%= remaining %></b> <%= remaining == 1 ? 'item' : 'items' %> left</div>
+        </div>
+        <% if (done) { %>
+            <button type="button" id="clear-completed" class="btn btn-danger">Clear <%= done %> completed <%= done == 1 ? 'item' : 'items' %></button>
+        <% } %>
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+#todo-list li.editing .edit {
+    display: block;
+    width: 100%;
+    padding: 3px 3px 3px 3px;
+    margin: 0;
+}
+
+#todo-list li.editing .view {
+    display: none;
+}
+
+
+#todo-list li .edit {
+    display: none;
+}
+
+#todo-list li.done label {
+    color: #5cb85c;
+    text-decoration: line-through;
+}
+
